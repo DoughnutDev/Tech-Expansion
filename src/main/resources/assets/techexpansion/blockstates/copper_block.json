@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "techexpansion:copper_block" },
+        "inventory": { "model": "techexpansion:copper_block" }
+   }
+}

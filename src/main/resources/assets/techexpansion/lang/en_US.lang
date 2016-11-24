@@ -1,0 +1,42 @@
+item.wrench.name=Wrench
+item.charged_crystal.name=Charged Crystal
+item.coal_dust.name=Coal Dust
+item.iron_dust.name=Iron Dust
+item.gold_dust.name=Gold Dust
+item.diamond_dust.name=Diamond Dust
+item.copper_dust.name=Copper Dust
+item.tin_dust.name=Tin Dust
+item.silver_dust.name=Silver Dust
+item.lead_dust.name=Lead Dust
+item.copper_ingot.name=Copper Ingot
+item.tin_ingot.name=Tin Ingot
+item.lead_ingot.name=Lead Ingot
+item.silver_ingot.name=Silver Ingot
+item.electrum_ingot.name=Electrum Ingot
+item.invar_ingot.name=Invar Ingot
+item.platinum_ingot.name=Platinum Ingot
+
+tile.crystal.name=Energetic Crystal
+tile.fluxed_grass.name=Fluxed Grass
+tile.rf_conduit_defluxed.name=DeFluxed RF Conduit
+tile.pulverizer.name=Pulverizer
+tile.creative_energy_cell.name=Creative Energy Cell
+tile.rf_furnace.name=RF Furnace
+tile.quarry.name=Quarry
+tile.metalbender.name=MetalBender
+
+tile.copper_ore.name=Copper Ore
+tile.copper_block.name=Copper Block
+tile.tin_ore.name=Tin Ore
+tile.tin_block.name=Tin Block
+tile.lead_ore.name=Lead Ore
+tile.lead_block.name=Lead Block
+tile.silver_ore.name=Silver Ore
+tile.silver_block.name=Silver Block
+tile.electrum_block.name=Electrum Block
+tile.invar_block.name=Invar Block
+tile.platinum_block.name=Platinum Block
+tile.platinum_ore.name=Platinum Ore
+
+itemGroup.TechExpansion=Tech Expansion
+itemGroup.Conduits=Tech Expansion Conduits

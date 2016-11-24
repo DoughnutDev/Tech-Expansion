@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "techexpansion:fluxed_grass" },
+        "inventory": { "model": "techexpansion:fluxed_grass" }
+   }
+}

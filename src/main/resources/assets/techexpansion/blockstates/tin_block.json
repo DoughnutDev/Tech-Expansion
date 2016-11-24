@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "techexpansion:tin_block" },
+        "inventory": { "model": "techexpansion:tin_block" }
+   }
+}

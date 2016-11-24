@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "techexpansion:invar_block" },
+        "inventory": { "model": "techexpansion:invar_block" }
+   }
+}

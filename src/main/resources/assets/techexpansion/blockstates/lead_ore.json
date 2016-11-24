@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "techexpansion:lead_ore" },
+        "inventory": { "model": "techexpansion:lead_ore" }
+   }
+}

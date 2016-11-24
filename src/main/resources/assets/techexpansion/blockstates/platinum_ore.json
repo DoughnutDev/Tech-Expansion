@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "techexpansion:platinum_ore" },
+        "inventory": { "model": "techexpansion:platinum_ore" }
+   }
+}

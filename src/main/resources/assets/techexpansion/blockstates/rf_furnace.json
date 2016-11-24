@@ -1,0 +1,18 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "techexpansion:rf_furnace"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "facing": {
+      "north": {"model": "techexpansion:rf_furnace"},
+      "south": {"model": "techexpansion:rf_furnace", "y": 180},
+      "west": {"model": "techexpansion:rf_furnace", "y": 270},
+      "east": {"model": "techexpansion:rf_furnace", "y": 90},
+      "up": {"model": "techexpansion:rf_furnace", "x": -90},
+      "down": {"model": "techexpansion:rf_furnace", "x": 90}
+    }
+  }
+}

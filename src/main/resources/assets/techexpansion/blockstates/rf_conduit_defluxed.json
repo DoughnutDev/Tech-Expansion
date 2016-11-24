@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "techexpansion:rf_conduit_defluxed" },
+        "inventory": { "model": "techexpansion:rf_conduit_defluxed" }
+    }
+}

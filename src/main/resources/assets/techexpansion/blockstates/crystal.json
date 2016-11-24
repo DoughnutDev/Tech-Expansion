@@ -1,0 +1,14 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "custom": { "flip-v": true },
+    "model": "techexpansion:crystal.obj",
+    "textures": {
+      "#Material.001": "techexpansion:blocks/crystaltexture"
+    }
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}
