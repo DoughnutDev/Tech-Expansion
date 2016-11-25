@@ -4,6 +4,7 @@ import java.util.Random;
 
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;

@@ -2,6 +2,7 @@ package abused_master.TechExpansion.blocks.machine;
 
 import abused_master.TechExpansion.TechExpansion;
 import abused_master.TechExpansion.gui.GuiHandler;
+import abused_master.TechExpansion.tileentities.machine.TileMetalBender;
 import abused_master.TechExpansion.tileentities.machine.TilePulverizer;
 import abused_master.TechExpansion.tileentities.machine.TileRFFurnace;
 import net.minecraft.block.BlockContainer;
@@ -14,6 +15,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
@@ -115,5 +117,15 @@ public class RFFurnace extends BlockContainer {
     protected BlockStateContainer createBlockState()
     {
         return new BlockStateContainer(this, new IProperty[] {FACING});
+    }
+
+    @Override
+    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+        TileEntity tileentity = worldIn.getTileEntity(pos);
+        if (tileentity instanceof TileRFFurnace)
+        {
+            InventoryHelper.dropInventoryItems(worldIn, pos, (TileRFFurnace)tileentity);
+        }
+        super.breakBlock(worldIn, pos, state);
     }
 }

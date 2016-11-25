@@ -11,6 +11,8 @@ import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
@@ -18,6 +20,7 @@ import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.Chunk;
 
 /**
  * Created by Mohammad on 11/23/2016.
@@ -87,5 +90,21 @@ public class Quarry extends BlockContainer {
     public IBlockState withRotation(IBlockState state, Rotation rot)
     {
         return state.withProperty(FACING, rot.rotate((EnumFacing)state.getValue(FACING)));
+    }
+
+    @Override
+    public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+        super.onBlockPlacedBy(world, pos, state, placer, stack);
+        int chunkX, chunkZ;
+        {
+            Chunk c = world.getChunkFromBlockCoords(pos);
+            chunkX = c.xPosition;
+            chunkZ = c.zPosition;
+        }
+        for (int x = 0; x < 17; x++) {
+            for (int z = 0; z < 17; z++) {
+                world.setBlockState(new BlockPos((chunkX * 16) + x, TileQuarry.y, (chunkZ * 16) + z), Blocks.COBBLESTONE.getDefaultState());
+            }
+        }
     }
 }

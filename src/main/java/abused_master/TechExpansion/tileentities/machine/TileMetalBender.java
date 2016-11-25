@@ -3,6 +3,8 @@ package abused_master.TechExpansion.tileentities.machine;
 import abused_master.TechExpansion.registry.ModBlocks;
 import abused_master.TechExpansion.tileentities.craftinghandlers.RecipeMetalBender;
 import cofh.api.energy.EnergyStorage;
+import cofh.api.energy.IEnergyProvider;
+import cofh.api.energy.IEnergyReceiver;
 import cofh.api.energy.TileEnergyHandler;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,6 +19,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
@@ -28,7 +31,7 @@ import javax.annotation.Nullable;
 /**
  * Created by DoughnutDev on 11/23/2016.
  */
-public class TileMetalBender extends TileEnergyHandler implements ITickable, IInventory, ISidedInventory {
+public class TileMetalBender extends TileEntity implements ITickable, ISidedInventory, IEnergyProvider, IEnergyReceiver {
 
     public EnergyStorage storage = new EnergyStorage(50000);
     private NonNullList<ItemStack> metalbendInv = NonNullList.<ItemStack>func_191197_a(2, ItemStack.field_190927_a);
@@ -330,4 +333,8 @@ public class TileMetalBender extends TileEnergyHandler implements ITickable, IIn
         this.readFromNBT(tag);
     }
 
+    @Override
+    public int extractEnergy(EnumFacing from, int maxExtract, boolean simulate) {
+        return 0;
+    }
 }

@@ -5,6 +5,8 @@ import javax.annotation.Nullable;
 import abused_master.TechExpansion.registry.ModBlocks;
 import abused_master.TechExpansion.tileentities.craftinghandlers.RecipePulverizer;
 import cofh.api.energy.EnergyStorage;
+import cofh.api.energy.IEnergyProvider;
+import cofh.api.energy.IEnergyReceiver;
 import cofh.api.energy.TileEnergyHandler;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,13 +20,14 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class TilePulverizer extends TileEnergyHandler implements ITickable, IInventory, ISidedInventory {
+public class TilePulverizer extends TileEntity implements ITickable, IInventory, ISidedInventory, IEnergyReceiver, IEnergyProvider{
 	
 	public EnergyStorage storage = new EnergyStorage(50000);
 	private NonNullList<ItemStack> pulverizerInv = NonNullList.<ItemStack>func_191197_a(2, ItemStack.field_190927_a);
@@ -325,4 +328,9 @@ public class TilePulverizer extends TileEnergyHandler implements ITickable, IInv
     {
       this.readFromNBT(tag);
     }
+
+	@Override
+	public int extractEnergy(EnumFacing from, int maxExtract, boolean simulate) {
+		return 0;
+	}
 }

@@ -5,6 +5,7 @@ import abused_master.TechExpansion.proxy.CommonProxy;
 import abused_master.TechExpansion.registry.MobDrops;
 import abused_master.TechExpansion.registry.ModBlocks;
 import abused_master.TechExpansion.registry.ModItems;
+import abused_master.TechExpansion.tileentities.machine.TileQuarry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
