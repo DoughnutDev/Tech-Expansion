@@ -1,5 +1,6 @@
 package abused_master.TechExpansion.tileentities.craftinghandlers;
 
+import abused_master.TechExpansion.registry.ModItems;
 import com.google.common.collect.Maps;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -23,7 +24,13 @@ public class RecipeMetalBender {
 
 
     private RecipeMetalBender() {
-        addBendingRecipeForBlock(Blocks.IRON_BLOCK, new ItemStack(Items.IRON_INGOT, 9), 1.0F);
+
+        addBendingRecipeForItem(Items.IRON_INGOT, new ItemStack(ModItems.IronPlate), 1.0F);
+        addBendingRecipeForItem(ModItems.LeadIngot, new ItemStack(ModItems.LeadPlate), 1.0F);
+        addBendingRecipeForItem(ModItems.CopperIngot, new ItemStack(ModItems.CopperPlate), 1.0F);
+        addBendingRecipeForItem(ModItems.ElectrumIngot, new ItemStack(ModItems.ElectrumPlate), 1.0F);
+        addBendingRecipeForItem(ModItems.InvarIngot, new ItemStack(ModItems.InvarPlate), 1.0F);
+        addBendingRecipeForItem(ModItems.PlatinumIngot, new ItemStack(ModItems.PlatinumPlate), 1.0F);
 
     }
 

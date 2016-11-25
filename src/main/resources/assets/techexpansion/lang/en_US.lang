@@ -15,6 +15,13 @@ item.silver_ingot.name=Silver Ingot
 item.electrum_ingot.name=Electrum Ingot
 item.invar_ingot.name=Invar Ingot
 item.platinum_ingot.name=Platinum Ingot
+item.copper_plate.name=Copper Plate
+item.iron_plate.name=Iron Plate
+item.lead_plate.name=Lead Plate
+item.electrum_plate.name=Electrum Plate
+item.invar_plate.name=Invar Plate
+item.invar_plate.name=Invar Plate
+item.platinum_plate.name=Platinum Plate
 
 tile.crystal.name=Energetic Crystal
 tile.fluxed_grass.name=Fluxed Grass
@@ -22,7 +29,7 @@ tile.rf_conduit_defluxed.name=DeFluxed RF Conduit
 tile.pulverizer.name=Pulverizer
 tile.creative_energy_cell.name=Creative Energy Cell
 tile.rf_furnace.name=RF Furnace
-tile.quarry.name=Quarry
+tile.quarry.name=Expansion Quarry
 tile.metalbender.name=MetalBender
 
 tile.copper_ore.name=Copper Ore
