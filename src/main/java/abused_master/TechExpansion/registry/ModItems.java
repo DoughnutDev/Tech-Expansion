@@ -27,6 +27,13 @@ public class ModItems {
 	public static Item ElectrumIngot;
 	public static Item InvarIngot;
 	public static Item PlatinumIngot;
+
+	public static Item IronPlate;
+ 	public static Item CopperPlate;
+ 	public static Item LeadPlate;
+ 	public static Item ElectrumPlate;
+ 	public static Item InvarPlate;
+ 	public static Item PlatinumPlate;
 	
 	public static Item Wrench = new Wrench();
 	public static Item ChargedCrystal = new ChargedCrystal();
@@ -53,6 +60,13 @@ public class ModItems {
 		ElectrumIngot = regResource("electrum_ingot");
 		InvarIngot = regResource("invar_ingot");
 		PlatinumIngot = regResource("platinum_ingot");
+
+		IronPlate = regResource("iron_plate");
+		CopperPlate = regResource("copper_plate");
+		LeadPlate = regResource("lead_plate");
+		ElectrumPlate = regResource("electrum_plate");
+		InvarPlate = regResource("invar_plate");
+		PlatinumPlate = regResource("platinum_plate");
 		
 	}
 	
@@ -86,6 +100,13 @@ public class ModItems {
 		reg(ElectrumIngot);
 		reg(InvarIngot);
 		reg(PlatinumIngot);
+
+		reg(IronPlate);
+		reg(CopperPlate);
+		reg(LeadPlate);
+		reg(ElectrumPlate);
+		reg(InvarPlate);
+		reg(PlatinumPlate);
 	}
 	
 	public static void reg(Item item) {
