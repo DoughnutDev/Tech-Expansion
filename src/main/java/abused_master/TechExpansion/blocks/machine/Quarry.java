@@ -101,8 +101,8 @@ public class Quarry extends BlockContainer {
             chunkX = c.xPosition;
             chunkZ = c.zPosition;
         }
-        for (int x = 0; x < 17; x++) {
-            for (int z = 0; z < 17; z++) {
+        for (int x = 0; x < 16; x++) {
+            for (int z = 0; z < 16; z++) {
                 world.setBlockState(new BlockPos((chunkX * 16) + x, TileQuarry.y, (chunkZ * 16) + z), Blocks.COBBLESTONE.getDefaultState());
             }
         }

@@ -29,6 +29,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Mohammad on 11/23/2016.
@@ -117,7 +119,7 @@ public class TileQuarry extends TileEntity implements ITickable, IEnergyProvider
     @Override
     public void update() {
 
-        if(y == -1) y = pos.getY() - 1;
+        if (y == -1) y = pos.getY() - 1;
         int chunkX, chunkZ;
 
         {
@@ -126,26 +128,40 @@ public class TileQuarry extends TileEntity implements ITickable, IEnergyProvider
             chunkZ = c.zPosition;
         }
 
-            if (/*!worldObj.isRemote && y > 0 && */atTickRate(10) && storage.getEnergyStored() >= 100) {
-                storage.setEnergyStored(storage.getEnergyStored() - 100);
-                boolean hasBrokenBlock = false;
-                start:
-                for (int x = 0; x < 16; ++x)
-                    for (int z = 0; z < 16; ++z) {
-                        BlockPos pos = new BlockPos(chunkX * 16 + x, y, chunkZ * 16 + z);
-                        Block bb = worldObj.getBlockState(pos).getBlock();
-                        if (!hasBrokenBlock && !worldObj.isAirBlock(pos) && FluidRegistry.lookupFluidForBlock(bb) == null && bb != Blocks.FLOWING_LAVA && bb != Blocks.FLOWING_WATER) {
-                            IBlockState state = worldObj.getBlockState(pos);
-                            Block b = state.getBlock();
-                            if (b.getBlockHardness(state, worldObj, pos) < 0F) continue;
+        if (/*!worldObj.isRemote && y > 0 && */atTickRate(10) && storage.getEnergyStored() >= 100) {
+            storage.setEnergyStored(storage.getEnergyStored() - 100);
+            boolean hasBrokenBlock = false;
+            start:
+            for (int x = 0; x < 16; ++x)
+                for (int z = 0; z < 16; ++z) {
+                    BlockPos pos = new BlockPos(chunkX * 16 + x, y, chunkZ * 16 + z);
+                    Block bb = worldObj.getBlockState(pos).getBlock();
+                    if (!hasBrokenBlock && !worldObj.isAirBlock(pos) && FluidRegistry.lookupFluidForBlock(bb) == null && bb != Blocks.FLOWING_LAVA && bb != Blocks.FLOWING_WATER) {
+                        IBlockState state = worldObj.getBlockState(pos);
+                        Block b = state.getBlock();
+                        if (b.getBlockHardness(state, worldObj, pos) < 0F) continue;
 
-                            hasBrokenBlock = true;
-                            worldObj.destroyBlock(pos, false);
+                        hasBrokenBlock = true;
+                        worldObj.destroyBlock(pos, false);
 
-                            break start;
-                        }
+                        break start;
                     }
-                if (!hasBrokenBlock) y--;
+                }
+            if (!hasBrokenBlock) y--;
+        }
+        List<ItemStack> drops;
+        drops = new ArrayList<ItemStack>();
+        for (ItemStack drop : drops) {
+            for (EnumFacing side : EnumFacing.VALUES) {
+                BlockPos cip = pos.offset(side);
+                TileEntity ite = worldObj.getTileEntity(cip);
+                if (ite instanceof IInventory) {
+                    drop = TileEntityHopper.putStackInInventoryAllSlots(null, (IInventory) ite, drop, side.getOpposite());
+                }
+                if (drop == null) {
+                    break;
+                }
             }
         }
+    }
 }
