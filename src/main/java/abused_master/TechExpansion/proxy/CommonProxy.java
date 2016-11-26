@@ -1,6 +1,7 @@
 package abused_master.TechExpansion.proxy;
 
 import abused_master.TechExpansion.TechExpansion;
+import abused_master.TechExpansion.dimension.ModDimensions;
 import abused_master.TechExpansion.gui.GuiHandler;
 import abused_master.TechExpansion.registry.JATMAGeneration;
 import abused_master.TechExpansion.registry.ModBlocks;
@@ -28,6 +29,7 @@ public class CommonProxy {
 		NetworkRegistry.INSTANCE.registerGuiHandler(TechExpansion.instance, new GuiHandler());
 		TERegistry.RegisterTE();
 		ModCrafting.regRecipes();
+		ModDimensions.init();
 	}
 	
 	public void postInit(FMLPostInitializationEvent e) {

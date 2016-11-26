@@ -1,9 +1,6 @@
 package abused_master.TechExpansion.registry;
 
-import abused_master.TechExpansion.blocks.BlockBase;
-import abused_master.TechExpansion.blocks.Crystal;
-import abused_master.TechExpansion.blocks.FluxedGrass;
-import abused_master.TechExpansion.blocks.MainItemBlock;
+import abused_master.TechExpansion.blocks.*;
 import abused_master.TechExpansion.blocks.conduits.RFConduitDeFluxed;
 import abused_master.TechExpansion.blocks.energycell.CreativeEnergyCell;
 import abused_master.TechExpansion.blocks.machine.Pulverizer;
@@ -28,7 +25,6 @@ public class ModBlocks {
 	public static Block CreativeEnergyCell = new CreativeEnergyCell(Material.ROCK);
 	public static Block Quarry = new Quarry(Material.ROCK);
 	public static Block MetalBender = new MetalBender(Material.ROCK);
-
 
 	public static Block CopperOre;
 	public static Block TinOre;

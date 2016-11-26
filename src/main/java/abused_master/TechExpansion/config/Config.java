@@ -16,9 +16,8 @@ public class Config {
 	
 	
 	public static int CrystalRate;
-	
-	
-	public static void init(FMLPreInitializationEvent event) {
+
+    public static void init(FMLPreInitializationEvent event) {
 
 		configpath = event.getModConfigurationDirectory().getAbsolutePath() + File.separator;
 		config = new Configuration(new File(configpath + "TechExpansion.cfg"));

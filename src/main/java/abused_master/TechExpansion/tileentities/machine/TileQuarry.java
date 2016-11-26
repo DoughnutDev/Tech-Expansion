@@ -125,16 +125,8 @@ public class TileQuarry extends TileEntity implements ITickable, IEnergyProvider
             chunkX = c.xPosition;
             chunkZ = c.zPosition;
         }
-        /*
-        int i = 1;
-        for (int x = chunkX; i < chunkX + 16; x++) {
-            for (int z = chunkZ; i < chunkZ + 16; z++) {
-                worldObj.setBlockState(new BlockPos(x, pos.getY(), z), Blocks.COBBLESTONE.getDefaultState());
-            }
-        }
-        */
 
-            if (!worldObj.isRemote && y > 0 && atTickRate(10) && storage.getEnergyStored() >= 100) {
+            if (/*!worldObj.isRemote && y > 0 && */atTickRate(10) && storage.getEnergyStored() >= 100) {
                 storage.setEnergyStored(storage.getEnergyStored() - 100);
                 boolean hasBrokenBlock = false;
                 start:

@@ -1,6 +1,7 @@
 package abused_master.TechExpansion;
 
 import abused_master.TechExpansion.config.Config;
+import abused_master.TechExpansion.dimension.TeleportCommand;
 import abused_master.TechExpansion.proxy.CommonProxy;
 import abused_master.TechExpansion.registry.MobDrops;
 import abused_master.TechExpansion.registry.ModBlocks;
@@ -17,6 +18,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
 @Mod(modid = Info.MODID, version = Info.VERSION, name = Info.MODNAME)
 public class TechExpansion {
@@ -43,7 +45,12 @@ public class TechExpansion {
 	public void postInit(FMLPostInitializationEvent e) {
 		this.proxy.postInit(e);
 	}
-	
+
+    @Mod.EventHandler
+    public void serverLoad(FMLServerStartingEvent event) {
+        event.registerServerCommand(new TeleportCommand());
+    }
+
     public static CreativeTabs TechExpansion = new CreativeTabs("TechExpansion")
     {
         @Override
