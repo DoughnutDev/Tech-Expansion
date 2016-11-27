@@ -4,9 +4,12 @@ import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyReceiver;
 import cofh.api.energy.IEnergyProvider;
 
+import com.mojang.authlib.GameProfile;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
@@ -21,8 +24,12 @@ import net.minecraft.util.ITickable;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.Chunk;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -31,6 +38,8 @@ import net.minecraftforge.items.IItemHandler;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
 /**
  * Created by Mohammad on 11/23/2016.
@@ -39,9 +48,15 @@ public class TileQuarry extends TileEntity implements ITickable, IEnergyProvider
 
     protected EnergyStorage storage = new EnergyStorage(100000);
     public static int y = -1;
+
+
+
     public boolean atTickRate(int rate) { return (worldObj.getTotalWorldTime() + ((long) rate) + ((long) pos.hashCode()) + ((long) pos.getX()) + ((long) pos.getY()) + ((long) pos.getZ())) % ((long) rate) == 0; };
     private long field_190578_g;
     private int transferCooldown = -1;
+    public static int RANGE = 16;
+    public ItemStack item = ItemStack.field_190927_a;
+    private static FakePlayer harvester = null;
 
     public TileQuarry() {
     }
@@ -118,7 +133,7 @@ public class TileQuarry extends TileEntity implements ITickable, IEnergyProvider
 
     @Override
     public void update() {
-
+        BlockPos quarrypos = getPos();
         if (y == -1) y = pos.getY() - 1;
         int chunkX, chunkZ;
 
@@ -128,7 +143,8 @@ public class TileQuarry extends TileEntity implements ITickable, IEnergyProvider
             chunkZ = c.zPosition;
         }
 
-        if (/*!worldObj.isRemote && y > 0 && */atTickRate(10) && storage.getEnergyStored() >= 100) {
+
+        if (atTickRate(10) && storage.getEnergyStored() >= 100) {
             storage.setEnergyStored(storage.getEnergyStored() - 100);
             boolean hasBrokenBlock = false;
             start:
@@ -138,8 +154,33 @@ public class TileQuarry extends TileEntity implements ITickable, IEnergyProvider
                     Block bb = worldObj.getBlockState(pos).getBlock();
                     if (!hasBrokenBlock && !worldObj.isAirBlock(pos) && FluidRegistry.lookupFluidForBlock(bb) == null && bb != Blocks.FLOWING_LAVA && bb != Blocks.FLOWING_WATER) {
                         IBlockState state = worldObj.getBlockState(pos);
+                        World world;
                         Block b = state.getBlock();
                         if (b.getBlockHardness(state, worldObj, pos) < 0F) continue;
+
+                        List<ItemStack> drops;
+
+                        drops = new ArrayList<ItemStack>();
+                        drops.add(new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state)));
+                        drops = state.getBlock().getDrops(getWorld(), pos, state, 0);
+                        for (ItemStack drop : drops) {
+                            for (EnumFacing side : EnumFacing.VALUES) {
+                                BlockPos cip = pos.offset(side);
+                                TileEntity ite = worldObj.getTileEntity(cip);
+                                if (ite instanceof IItemHandler) {
+                                    drop = TileEntityHopper.putStackInInventoryAllSlots(null, (IInventory) ite, drop, side.getOpposite());
+                                }
+                                if (drop == null) {
+                                    break;
+                                }
+                            }
+                            if (drop != null) {
+                                EntityItem ent = new EntityItem(getWorld(), quarrypos.getX() + 0.5, quarrypos.getY() + 1, quarrypos.getZ() + 0.5);
+                                ent.setEntityItemStack(drop);
+                                getWorld().spawnEntityInWorld(ent);
+                            }
+                        }
+
 
                         hasBrokenBlock = true;
                         worldObj.destroyBlock(pos, false);
@@ -149,19 +190,6 @@ public class TileQuarry extends TileEntity implements ITickable, IEnergyProvider
                 }
             if (!hasBrokenBlock) y--;
         }
-        List<ItemStack> drops;
-        drops = new ArrayList<ItemStack>();
-        for (ItemStack drop : drops) {
-            for (EnumFacing side : EnumFacing.VALUES) {
-                BlockPos cip = pos.offset(side);
-                TileEntity ite = worldObj.getTileEntity(cip);
-                if (ite instanceof IInventory) {
-                    drop = TileEntityHopper.putStackInInventoryAllSlots(null, (IInventory) ite, drop, side.getOpposite());
-                }
-                if (drop == null) {
-                    break;
-                }
-            }
-        }
+
     }
 }
