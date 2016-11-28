@@ -163,7 +163,8 @@ public class TileQuarry extends TileEntity implements ITickable, IEnergyProvider
                         drops = state.getBlock().getDrops(getWorld(), pos, state, 0);
                         for (ItemStack drop : drops) {
                             for (EnumFacing side : EnumFacing.VALUES) {
-                                BlockPos cip = pos.offset(side);
+                                //BlockPos cip = pos.offset(side);
+                                BlockPos cip = quarrypos.offset(side);
                                 TileEntity ite = worldObj.getTileEntity(cip);
                                 if (ite instanceof IInventory) {
                                     drop = TileEntityHopper.putStackInInventoryAllSlots(null, (IInventory) ite, drop, side.getOpposite());
