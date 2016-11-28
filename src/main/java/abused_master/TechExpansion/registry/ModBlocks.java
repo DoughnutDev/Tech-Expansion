@@ -17,10 +17,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
 		
-	public static Block Crystal = new Crystal(Material.ROCK);
 	public static Block Pulverizer = new Pulverizer(Material.ROCK);
 	public static Block RFFurnace = new RFFurnace((Material.ROCK));
-	public static Block FluxedGrass = new FluxedGrass(Material.GRASS);
 	public static Block RFConduit = new RFConduitDeFluxed(Material.ROCK);
 	public static Block CreativeEnergyCell = new CreativeEnergyCell(Material.ROCK);
 	public static Block Quarry = new Quarry(Material.ROCK);
@@ -41,14 +39,11 @@ public class ModBlocks {
 	public static Block PlatinumBlock;
 	public static Block PlatinumOre;
 
+	public static Block NickelBlock;
+	public static Block NickelOre;
+
 	public static void init() {
-		
-	GameRegistry.register(Crystal.setRegistryName("crystal"));
-	GameRegistry.register(new MainItemBlock(Crystal).setRegistryName(Crystal.getRegistryName()));
-	
-	GameRegistry.register(FluxedGrass.setRegistryName("fluxed_grass"));
-	GameRegistry.register(new MainItemBlock(FluxedGrass).setRegistryName(FluxedGrass.getRegistryName()));
-	
+
 	GameRegistry.register(RFConduit.setRegistryName("rf_conduit_defluxed"));
 	GameRegistry.register(new MainItemBlock(RFConduit).setRegistryName(RFConduit.getRegistryName()));
 	
@@ -81,6 +76,9 @@ public class ModBlocks {
 		InvarBlock = regBlock((Material.ROCK), "invar_block", 1.5F, 1);
 		PlatinumBlock = regBlock((Material.IRON), "platinum_block", 2.0F, 2);
 		PlatinumOre = regBlock((Material.IRON), "platinum_ore", 2.0F, 3);
+
+		NickelBlock = regBlock((Material.IRON), "nickel_block", 1.5F, 2);
+		NickelOre = regBlock((Material.IRON), "nickel_ore", 1.5F, 2);
 	}
 
 	private static Block regBlock(Material material, String regName, float hardness, int level) {
@@ -100,8 +98,6 @@ public class ModBlocks {
 	public static void RegisterRender() {
 		reg(CreativeEnergyCell);
 		reg(RFConduit);
-		reg(Crystal);
-		reg(FluxedGrass);
 		reg(Pulverizer);
 		reg(RFFurnace);
 		reg(MetalBender);
@@ -120,6 +116,9 @@ public class ModBlocks {
 		reg(InvarBlock);
 		reg(PlatinumBlock);
 		reg(PlatinumOre);
+
+		reg(NickelBlock);
+		reg(NickelOre);
 
         reg(Quarry);
 	}

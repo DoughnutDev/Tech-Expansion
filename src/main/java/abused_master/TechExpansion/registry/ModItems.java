@@ -1,6 +1,5 @@
 package abused_master.TechExpansion.registry;
 
-import abused_master.TechExpansion.items.ChargedCrystal;
 import abused_master.TechExpansion.items.ResourceBase;
 import abused_master.TechExpansion.items.Wrench;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -34,15 +33,17 @@ public class ModItems {
  	public static Item ElectrumPlate;
  	public static Item InvarPlate;
  	public static Item PlatinumPlate;
+
+	public static Item ElectrumDust;
+	public static Item NickelIngot;
+	public static Item NickelDust;
 	
 	public static Item Wrench = new Wrench();
-	public static Item ChargedCrystal = new ChargedCrystal();
-	
+
 	public static void init() {
 		
 		GameRegistry.register(Wrench.setRegistryName("wrench"));
-		GameRegistry.register(ChargedCrystal.setRegistryName("charged_crystal"));
-		
+
 		CoalDust = regResource("coal_dust");
 		IronDust = regResource("iron_dust");
 		GoldDust = regResource("gold_dust");
@@ -67,6 +68,10 @@ public class ModItems {
 		ElectrumPlate = regResource("electrum_plate");
 		InvarPlate = regResource("invar_plate");
 		PlatinumPlate = regResource("platinum_plate");
+
+		ElectrumDust = regResource("electrum_dust");
+		NickelIngot = regResource("nickel_ingot");
+		NickelDust = regResource("nickel_dust");
 		
 	}
 	
@@ -84,7 +89,6 @@ public class ModItems {
 	public static void RegisterRender() {
 		
 		reg(Wrench);
-		reg(ChargedCrystal);
 		reg(IronDust);
 		reg(CoalDust);
 		reg(GoldDust);
@@ -107,6 +111,10 @@ public class ModItems {
 		reg(ElectrumPlate);
 		reg(InvarPlate);
 		reg(PlatinumPlate);
+
+		reg(ElectrumDust);
+		reg(NickelIngot);
+		reg(NickelDust);
 	}
 	
 	public static void reg(Item item) {

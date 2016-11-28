@@ -56,7 +56,6 @@ public class TileQuarry extends TileEntity implements ITickable, IEnergyProvider
     private int transferCooldown = -1;
     public static int RANGE = 16;
     public ItemStack item = ItemStack.field_190927_a;
-    private static FakePlayer harvester = null;
 
     public TileQuarry() {
     }
@@ -161,13 +160,12 @@ public class TileQuarry extends TileEntity implements ITickable, IEnergyProvider
                         List<ItemStack> drops;
 
                         drops = new ArrayList<ItemStack>();
-                        drops.add(new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state)));
                         drops = state.getBlock().getDrops(getWorld(), pos, state, 0);
                         for (ItemStack drop : drops) {
                             for (EnumFacing side : EnumFacing.VALUES) {
                                 BlockPos cip = pos.offset(side);
                                 TileEntity ite = worldObj.getTileEntity(cip);
-                                if (ite instanceof IItemHandler) {
+                                if (ite instanceof IInventory) {
                                     drop = TileEntityHopper.putStackInInventoryAllSlots(null, (IInventory) ite, drop, side.getOpposite());
                                 }
                                 if (drop == null) {
@@ -180,16 +178,14 @@ public class TileQuarry extends TileEntity implements ITickable, IEnergyProvider
                                 getWorld().spawnEntityInWorld(ent);
                             }
                         }
-
-
+                        if(y > 1) {
                         hasBrokenBlock = true;
                         worldObj.destroyBlock(pos, false);
-
-                        break start;
+                            break start;
+                        }
                     }
                 }
             if (!hasBrokenBlock) y--;
         }
-
     }
 }

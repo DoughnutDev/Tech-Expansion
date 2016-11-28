@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "techexpansion:nickel_block" },
+        "inventory": { "model": "techexpansion:nickel_block" }
+   }
+}

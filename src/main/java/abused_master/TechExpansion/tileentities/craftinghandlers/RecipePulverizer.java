@@ -39,18 +39,21 @@ public class RecipePulverizer {
     	
     	addPulverizingRecipeForItem(Items.IRON_INGOT, new ItemStack(ModItems.IronDust), 1.0F);
     	addPulverizingRecipeForItem(Items.COAL, new ItemStack(ModItems.CoalDust), 1.0F);
-    	addPulverizingRecipeForItem(Items.GOLD_INGOT, new ItemStack(ModItems.CoalDust), 1.0F);
+    	addPulverizingRecipeForItem(Items.GOLD_INGOT, new ItemStack(ModItems.GoldDust), 1.0F);
     	addPulverizingRecipeForItem(Items.DIAMOND, new ItemStack(ModItems.DiamondDust), 1.0F);
     	
     	addPulverizingRecipeForItem(ModItems.CopperIngot, new ItemStack(ModItems.CopperDust), 1.0F);
     	addPulverizingRecipeForItem(ModItems.TinIngot, new ItemStack(ModItems.TinDust), 1.0F);
     	addPulverizingRecipeForItem(ModItems.SilverIngot, new ItemStack(ModItems.SilverDust), 1.0F);
-    	addPulverizingRecipeForItem(ModItems.LeadIngot, new ItemStack(ModItems.LeadDust), 1.0F);
+        addPulverizingRecipeForItem(ModItems.LeadIngot, new ItemStack(ModItems.LeadDust), 1.0F);
+        addPulverizingRecipeForItem(ModItems.NickelIngot, new ItemStack(ModItems.NickelDust), 1.0F);
+        addPulverizingRecipeForItem(ModItems.ElectrumIngot, new ItemStack(ModItems.ElectrumDust), 1.0F);
 
         addPulverizingRecipeForBlock(ModBlocks.CopperOre, new ItemStack(ModItems.CopperDust, 2), 1.0F);
         addPulverizingRecipeForBlock(ModBlocks.TinOre, new ItemStack(ModItems.TinDust, 2), 1.0F);
         addPulverizingRecipeForBlock(ModBlocks.LeadOre, new ItemStack(ModItems.LeadDust, 2), 1.0F);
         addPulverizingRecipeForBlock(ModBlocks.SilverOre, new ItemStack(ModItems.SilverDust, 2), 1.0F);
+        addPulverizingRecipeForBlock(ModBlocks.NickelOre, new ItemStack(ModItems.NickelDust, 2), 1.0F);
 
         addPulverizingRecipeForBlock(Blocks.LAPIS_ORE, new ItemStack(Items.DYE, 12, 4), 1.0F);
         addPulverizingRecipeForBlock(Blocks.EMERALD_ORE, new ItemStack(Items.EMERALD, 2), 1.0F);

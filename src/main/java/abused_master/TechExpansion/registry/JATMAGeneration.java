@@ -12,12 +12,12 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class JATMAGeneration implements IWorldGenerator {
 	
-	private WorldGenerator ChargedCrystal;
+	//private WorldGenerator ChargedCrystal;
 	
 	
 	public JATMAGeneration() {
 		
-	    this.ChargedCrystal = new WorldGenMinable(ModBlocks.Crystal.getDefaultState(), 1);
+	    //this.ChargedCrystal = new WorldGenMinable(ModBlocks.Crystal.getDefaultState(), 1);
 	}
     
     private void runGenerator(WorldGenerator generator, World world, Random rand, int chunk_X, int chunk_Z, int chancesToSpawn, int minHeight, int maxHeight) {
@@ -41,7 +41,7 @@ public class JATMAGeneration implements IWorldGenerator {
         case 0: //Overworld
         	
         	
-        	this.runGenerator(this.ChargedCrystal, world, random, chunkX, chunkZ, /*change back to config later*/10, 0, 256);
+        	//this.runGenerator(this.ChargedCrystal, world, random, chunkX, chunkZ, /*change back to config later*/10, 0, 256);
         	
         	
         	break;
