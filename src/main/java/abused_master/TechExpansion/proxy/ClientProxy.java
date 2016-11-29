@@ -1,8 +1,10 @@
 package abused_master.TechExpansion.proxy;
 
 import abused_master.TechExpansion.Info;
+import abused_master.TechExpansion.items.armor.jetpack.LeadJetpack;
 import abused_master.TechExpansion.registry.ModBlocks;
 import abused_master.TechExpansion.registry.ModItems;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -27,5 +29,5 @@ public class ClientProxy extends CommonProxy {
 	public void postInit(FMLPostInitializationEvent e) {
 		super.postInit(e);
 	}
-	
+
 }

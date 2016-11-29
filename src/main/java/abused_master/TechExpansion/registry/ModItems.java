@@ -2,9 +2,14 @@ package abused_master.TechExpansion.registry;
 
 import abused_master.TechExpansion.items.ResourceBase;
 import abused_master.TechExpansion.items.Wrench;
+import abused_master.TechExpansion.items.armor.jetpack.LeadJetpack;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
+import net.minecraft.util.SoundEvent;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModItems {
@@ -40,9 +45,13 @@ public class ModItems {
 	
 	public static Item Wrench = new Wrench();
 
+	public static ItemArmor.ArmorMaterial LeadJetpackMaterial = EnumHelper.addArmorMaterial("LeadJetpackMaterial", "techexpansion:lead_jetpack", -1, new int[]{2, 6, 5, 2}, 0, null, 0);
+	public static ItemArmor LeadJetpack = new LeadJetpack(LeadJetpackMaterial, 0, EntityEquipmentSlot.CHEST);
+
 	public static void init() {
 		
 		GameRegistry.register(Wrench.setRegistryName("wrench"));
+		GameRegistry.register(LeadJetpack.setRegistryName("lead_jetpack"));
 
 		CoalDust = regResource("coal_dust");
 		IronDust = regResource("iron_dust");
@@ -115,6 +124,7 @@ public class ModItems {
 		reg(ElectrumDust);
 		reg(NickelIngot);
 		reg(NickelDust);
+		reg(LeadJetpack);
 	}
 	
 	public static void reg(Item item) {

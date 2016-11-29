@@ -8,6 +8,7 @@ import abused_master.TechExpansion.registry.ModBlocks;
 import abused_master.TechExpansion.registry.ModCrafting;
 import abused_master.TechExpansion.registry.ModItems;
 import abused_master.TechExpansion.tileentities.TERegistry;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -30,9 +31,9 @@ public class CommonProxy {
 		TERegistry.RegisterTE();
 		ModCrafting.regRecipes();
 		ModDimensions.init();
-	}
+}
 	
 	public void postInit(FMLPostInitializationEvent e) {
 	}
-	
+
 }

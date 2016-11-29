@@ -20,6 +20,7 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityHopper;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
 
 import net.minecraft.util.math.BlockPos;
@@ -163,7 +164,6 @@ public class TileQuarry extends TileEntity implements ITickable, IEnergyProvider
                         drops = state.getBlock().getDrops(getWorld(), pos, state, 0);
                         for (ItemStack drop : drops) {
                             for (EnumFacing side : EnumFacing.VALUES) {
-                                //BlockPos cip = pos.offset(side);
                                 BlockPos cip = quarrypos.offset(side);
                                 TileEntity ite = worldObj.getTileEntity(cip);
                                 if (ite instanceof IInventory) {
@@ -179,11 +179,9 @@ public class TileQuarry extends TileEntity implements ITickable, IEnergyProvider
                                 getWorld().spawnEntityInWorld(ent);
                             }
                         }
-                        if(y > 1) {
                         hasBrokenBlock = true;
                         worldObj.destroyBlock(pos, false);
                             break start;
-                        }
                     }
                 }
             if (!hasBrokenBlock) y--;

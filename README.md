@@ -8,8 +8,12 @@ Ideas & Things to come/added:<br>
 Pulverizer - Done<br>
 RF Furnace - Done<br>
 MetalBender - Done<br>
-Expansion Quarry - Almost Done<br>
+Expansion Quarry - Done<br>
 Creative Energy Cell - Done<br>
+Lead Jetpack<br>
+Lead Jetpack Armor<br>
+Electrum Jetpack<br>
+Electrum Jetpack Armor<br>
 Lead Energy Cell<br>
 Electrum Energy Cell<br>
 Platinum Energy Cell<br>
