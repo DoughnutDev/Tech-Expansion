@@ -5,22 +5,27 @@ Tech Expansion is a tech mod that incorperates ideas from all over the place.<br
 It is currently heavily WIP.<br>
 Feel free to help out just fork the project and create a pull request when done!<br>
 Ideas & Things to come/added:<br>
+Resources(All Done): <br>
+Blocks:<br>
+Copper Ore, Tin Ore, Lead Ore, Silver Ore, Copper Block, Tin Block, Lead Block,<br>
+Silver Block, Electrum Block, Invar Block, Platinum Block, Platinum Ore, Nickel Block, Nickel Ore<br>
+Items:
+Coal Dust, Iron Dust, Gold Dust, Diamond Dust, Copper Dust, Tin Dust, Silver Dust,<br>
+Lead Dust, Nickel Dust, Electrum Dust<br>
+Copper Ingot, Tin Ingot, Silver Ingot, Lead Ingot, Electrum Ingot, Invar Ingot, Platinum Ingot, Nickel Ingot<br>
+Iron Plate, Copper Plate, Lead Plate, Electrum Plate, Invar Plate, Platinum Plate<br><br>
+Machines/Other Stuff:<br>
 Pulverizer - Done<br>
 RF Furnace - Done<br>
 MetalBender - Done<br>
 Expansion Quarry - Done<br>
 Creative Energy Cell - Done<br>
-Lead Jetpack<br>
-Lead Jetpack Armor<br>
-Electrum Jetpack<br>
-Electrum Jetpack Armor<br>
+Lead Jetpack - Done<br>
 Lead Energy Cell<br>
 Electrum Energy Cell<br>
 Platinum Energy Cell<br>
 Harvester<br>
 Planter<br>
-Electrical Spawner<br>
-RF Ability Augments<br>
 Various RF generation methods (Ideas Needed) {<br>
 Coal Generator<br>
 Lava Generator<br>
