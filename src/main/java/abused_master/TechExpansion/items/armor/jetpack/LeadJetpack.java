@@ -1,32 +1,21 @@
 package abused_master.TechExpansion.items.armor.jetpack;
 
-import abused_master.TechExpansion.Info;
 import abused_master.TechExpansion.TechExpansion;
-import abused_master.TechExpansion.registry.ModItems;
+import abused_master.TechExpansion.registry.KeybindHandler;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyContainerItem;
-import net.java.games.input.Component;
-import net.java.games.input.Keyboard;
-import net.minecraft.block.Block;
-import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
+
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EntityDamageSource;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import net.minecraftforge.fluids.IFluidBlock;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import scala.swing.event.Key;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -39,7 +28,6 @@ public class LeadJetpack extends ItemArmor implements IEnergyContainerItem {
     public EnergyStorage storage = new EnergyStorage(100000);
 
     ModelLeadJetpack pack;
-    private static final ResourceLocation Pulverizer = new ResourceLocation(Info.MODID, "textures/items/lead_jetpack.png");
 
     public LeadJetpack(ArmorMaterial materialIn, int renderIndexIn, EntityEquipmentSlot equipmentSlotIn) {
         super(materialIn, renderIndexIn, equipmentSlotIn);
@@ -58,6 +46,16 @@ public class LeadJetpack extends ItemArmor implements IEnergyContainerItem {
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
         return super.getArmorTexture(stack, entity, slot, type);
+    }
+
+    @Override
+    public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
+        if(KeybindHandler.keybind.isKeyDown() && storage.getEnergyStored() > 200) {
+            storage.setEnergyStored(storage.getEnergyStored() - 50);
+            player.addVelocity(0, 0.1, 0);
+            player.fallDistance = 0;
+        }
+        super.onArmorTick(world, player, itemStack);
     }
 
     @Override

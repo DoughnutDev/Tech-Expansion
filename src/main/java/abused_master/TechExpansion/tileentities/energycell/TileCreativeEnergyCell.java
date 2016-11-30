@@ -47,7 +47,8 @@ public class TileCreativeEnergyCell extends TileEntity implements IEnergyReceive
 	@Override
 	public int extractEnergy(EnumFacing from, int maxExtract, boolean simulate) {
 
-		return storage.extractEnergy(maxExtract = 1000000, simulate);
+		//return storage.extractEnergy(maxExtract = 1000000, simulate);
+		return 1000000;
 	}
 	@Override
 	public int getEnergyStored(EnumFacing from) {

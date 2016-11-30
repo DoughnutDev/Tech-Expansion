@@ -2,6 +2,7 @@ package abused_master.TechExpansion.proxy;
 
 import abused_master.TechExpansion.Info;
 import abused_master.TechExpansion.items.armor.jetpack.LeadJetpack;
+import abused_master.TechExpansion.registry.KeybindHandler;
 import abused_master.TechExpansion.registry.ModBlocks;
 import abused_master.TechExpansion.registry.ModItems;
 import net.minecraft.client.model.ModelBiped;
@@ -18,6 +19,7 @@ public class ClientProxy extends CommonProxy {
 		ModItems.RegisterRender();
 		ModBlocks.RegisterRender();
 	    OBJLoader.INSTANCE.addDomain(Info.MODID);
+		KeybindHandler.init();
 	}
 	
 	@Override
