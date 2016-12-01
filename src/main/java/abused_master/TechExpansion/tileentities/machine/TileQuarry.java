@@ -134,7 +134,6 @@ public class TileQuarry extends TileEntity implements ITickable, IEnergyProvider
     @Override
     public void update() {
         BlockPos quarrypos = getPos();
-        worldObj.spawnParticle(EnumParticleTypes.getByName("fire"), quarrypos.getX(), quarrypos.getY(), quarrypos.getZ(), 0D, 0D, 0D);
         if (y == -1) y = pos.getY() - 1;
         int chunkX, chunkZ;
 

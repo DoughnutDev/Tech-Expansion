@@ -21,9 +21,8 @@ MetalBender - Done<br>
 Expansion Quarry - Done<br>
 Creative Energy Cell - Done<br>
 Lead Jetpack - Done<br>
-Lead Energy Cell<br>
-Electrum Energy Cell<br>
-Platinum Energy Cell<br>
+Lead Energy Cell - WIP - GUI Left<br>
+Electrum Energy Cell - WIP{ GUI Left<br>
 Harvester<br>
 Planter<br>
 Various RF generation methods (Ideas Needed) {<br>

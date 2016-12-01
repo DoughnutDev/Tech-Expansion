@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "techexpansion:blocks/creative_energy_cell"
+        "all": "techexpansion:blocks/cracked_stone"
     }
 }

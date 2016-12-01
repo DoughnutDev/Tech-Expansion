@@ -1,5 +1,4 @@
-item.wrench.name=Wrench
-item.charged_crystal.name=Charged Crystal
+item.wrench.name=Expansion Wrench
 item.coal_dust.name=Coal Dust
 item.iron_dust.name=Iron Dust
 item.gold_dust.name=Gold Dust
@@ -22,15 +21,18 @@ item.electrum_plate.name=Electrum Plate
 item.invar_plate.name=Invar Plate
 item.invar_plate.name=Invar Plate
 item.platinum_plate.name=Platinum Plate
+item.lead_jetpack.name=Lead Infused Jetpack
+item.nickel_ingot.name=Nickel Ingot
+item.nickel_dust.name=Nickel Dust
 
-tile.crystal.name=Energetic Crystal
-tile.fluxed_grass.name=Fluxed Grass
 tile.rf_conduit_defluxed.name=DeFluxed RF Conduit
 tile.pulverizer.name=Pulverizer
-tile.creative_energy_cell.name=Creative Energy Cell
+tile.creative_energy_bank.name=Creative Energy Bank
 tile.rf_furnace.name=RF Furnace
 tile.quarry.name=Expansion Quarry
 tile.metalbender.name=MetalBender
+tile.lead_infused_energy_bank.name=Lead Infused Energy Bank
+tile.electrum_infused_energy_bank.name=Electrum Infused Energy Bank
 
 tile.copper_ore.name=Copper Ore
 tile.copper_block.name=Copper Block
@@ -44,6 +46,9 @@ tile.electrum_block.name=Electrum Block
 tile.invar_block.name=Invar Block
 tile.platinum_block.name=Platinum Block
 tile.platinum_ore.name=Platinum Ore
+tile.nickel_block.name=Nickel Block
+tile.nickel_ore.name=Nickel Ore
+tille.cracked_stone.name=Cracked Stone
 
 itemGroup.TechExpansion=Tech Expansion
 itemGroup.Conduits=Tech Expansion Conduits

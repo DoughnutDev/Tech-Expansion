@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "techexpansion:cracked_stone" },
+        "inventory": { "model": "techexpansion:cracked_stone" }
+   }
+}

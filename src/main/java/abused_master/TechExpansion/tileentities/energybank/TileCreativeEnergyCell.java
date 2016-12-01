@@ -1,4 +1,4 @@
-package abused_master.TechExpansion.tileentities.energycell;
+package abused_master.TechExpansion.tileentities.energybank;
 
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyConnection;

@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "techexpansion:lead_infused_energy_bank" },
+        "inventory": { "model": "techexpansion:lead_infused_energy_bank" }
+   }
+}

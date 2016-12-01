@@ -2,7 +2,9 @@ package abused_master.TechExpansion.registry;
 
 import abused_master.TechExpansion.blocks.*;
 import abused_master.TechExpansion.blocks.conduits.RFConduitDeFluxed;
-import abused_master.TechExpansion.blocks.energycell.CreativeEnergyCell;
+import abused_master.TechExpansion.blocks.energybank.CreativeEnergyBank;
+import abused_master.TechExpansion.blocks.energybank.ElectrumInfusedEnergyBank;
+import abused_master.TechExpansion.blocks.energybank.LeadInfusedEnergyBank;
 import abused_master.TechExpansion.blocks.machine.Pulverizer;
 import abused_master.TechExpansion.blocks.machine.RFFurnace;
 import abused_master.TechExpansion.blocks.machine.MetalBender;
@@ -20,9 +22,11 @@ public class ModBlocks {
 	public static Block Pulverizer = new Pulverizer(Material.ROCK);
 	public static Block RFFurnace = new RFFurnace((Material.ROCK));
 	public static Block RFConduit = new RFConduitDeFluxed(Material.ROCK);
-	public static Block CreativeEnergyCell = new CreativeEnergyCell(Material.ROCK);
+	public static Block CreativeEnergyBank = new CreativeEnergyBank(Material.ROCK);
 	public static Block Quarry = new Quarry(Material.ROCK);
 	public static Block MetalBender = new MetalBender(Material.ROCK);
+	public static Block LeadInfusedEnergyBank = new LeadInfusedEnergyBank(Material.ROCK);
+	public static Block ElectrumInfusedEnergyBank = new ElectrumInfusedEnergyBank(Material.ROCK);
 
 	public static Block CopperOre;
 	public static Block TinOre;
@@ -42,13 +46,21 @@ public class ModBlocks {
 	public static Block NickelBlock;
 	public static Block NickelOre;
 
+	public static Block CrackedStone;
+
 	public static void init() {
 
 	GameRegistry.register(RFConduit.setRegistryName("rf_conduit_defluxed"));
 	GameRegistry.register(new MainItemBlock(RFConduit).setRegistryName(RFConduit.getRegistryName()));
 	
-	GameRegistry.register(CreativeEnergyCell.setRegistryName("creative_energy_cell"));
-	GameRegistry.register(new MainItemBlock(CreativeEnergyCell).setRegistryName(CreativeEnergyCell.getRegistryName()));
+	GameRegistry.register(CreativeEnergyBank.setRegistryName("creative_energy_bank"));
+	GameRegistry.register(new MainItemBlock(CreativeEnergyBank).setRegistryName(CreativeEnergyBank.getRegistryName()));
+
+		GameRegistry.register(LeadInfusedEnergyBank.setRegistryName("lead_infused_energy_bank"));
+		GameRegistry.register(new MainItemBlock(LeadInfusedEnergyBank).setRegistryName(LeadInfusedEnergyBank.getRegistryName()));
+
+		GameRegistry.register(ElectrumInfusedEnergyBank.setRegistryName("electrum_infused_energy_bank"));
+		GameRegistry.register(new MainItemBlock(ElectrumInfusedEnergyBank).setRegistryName(ElectrumInfusedEnergyBank.getRegistryName()));
 	
 	GameRegistry.register(Pulverizer.setRegistryName("pulverizer"));
 	GameRegistry.register(new MainItemBlock(Pulverizer).setRegistryName(Pulverizer.getRegistryName()));
@@ -79,6 +91,8 @@ public class ModBlocks {
 
 		NickelBlock = regBlock((Material.IRON), "nickel_block", 1.5F, 2);
 		NickelOre = regBlock((Material.IRON), "nickel_ore", 1.5F, 2);
+
+		CrackedStone = regBlock((Material.GROUND), "cracked_stone", 1.0F, 0);
 	}
 
 	private static Block regBlock(Material material, String regName, float hardness, int level) {
@@ -96,11 +110,13 @@ public class ModBlocks {
 	}
 
 	public static void RegisterRender() {
-		reg(CreativeEnergyCell);
+		reg(CreativeEnergyBank);
 		reg(RFConduit);
 		reg(Pulverizer);
 		reg(RFFurnace);
 		reg(MetalBender);
+		reg(LeadInfusedEnergyBank);
+		reg(ElectrumInfusedEnergyBank);
 
 		reg(CopperOre);
 		reg(TinOre);
@@ -121,6 +137,8 @@ public class ModBlocks {
 		reg(NickelOre);
 
         reg(Quarry);
+
+		reg(CrackedStone);
 	}
 	
 	 public static void reg(Block block) {

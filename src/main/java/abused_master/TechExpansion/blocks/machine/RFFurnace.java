@@ -30,7 +30,6 @@ public class RFFurnace extends BlockContainer {
 
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     TileRFFurnace RFFurnace;
-    public static final PropertyBool WORKING = PropertyBool.create("working");
 
     public RFFurnace(Material material) {
         super(material);
