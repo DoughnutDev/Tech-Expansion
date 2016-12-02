@@ -1,0 +1,22 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "particle": "techexpansion:blocks/coalgen_sides",
+    "0": "techexpansion:blocks/coalgen",
+    "1": "techexpansion:blocks/coalgen_sides",
+    "3": "techexpansion:blocks/coalgen_top"
+  },
+  "elements": [
+    {   "from": [ 0, 0, 0 ],
+      "to": [ 16, 16, 16 ],
+      "faces": {
+        "down":  { "texture": "#1", "cullface": "down" },
+        "up":    { "texture": "#3", "cullface": "up"   },
+        "north": { "texture": "#0", "cullface": "north"   },
+        "south": { "texture": "#1", "cullface": "south"   },
+        "west":  { "texture": "#1", "cullface": "west"   },
+        "east":  { "texture": "#1", "cullface": "east"   }
+      }
+    }
+  ]
+}

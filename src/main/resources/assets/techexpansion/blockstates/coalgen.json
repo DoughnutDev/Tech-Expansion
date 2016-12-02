@@ -1,0 +1,18 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "techexpansion:coalgen"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "facing": {
+      "north": {"model": "techexpansion:coalgen"},
+      "south": {"model": "techexpansion:coalgen", "y": 180},
+      "west": {"model": "techexpansion:coalgen", "y": 270},
+      "east": {"model": "techexpansion:coalgen", "y": 90},
+      "up": {"model": "techexpansion:coalgen", "x": -90},
+      "down": {"model": "techexpansion:coalgen", "x": 90}
+    }
+  }
+}

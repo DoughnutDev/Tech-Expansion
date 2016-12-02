@@ -5,6 +5,7 @@ import abused_master.TechExpansion.blocks.conduits.RFConduitDeFluxed;
 import abused_master.TechExpansion.blocks.energybank.CreativeEnergyBank;
 import abused_master.TechExpansion.blocks.energybank.ElectrumInfusedEnergyBank;
 import abused_master.TechExpansion.blocks.energybank.LeadInfusedEnergyBank;
+import abused_master.TechExpansion.blocks.generators.CoalGen;
 import abused_master.TechExpansion.blocks.machine.Pulverizer;
 import abused_master.TechExpansion.blocks.machine.RFFurnace;
 import abused_master.TechExpansion.blocks.machine.MetalBender;
@@ -27,6 +28,7 @@ public class ModBlocks {
 	public static Block MetalBender = new MetalBender(Material.ROCK);
 	public static Block LeadInfusedEnergyBank = new LeadInfusedEnergyBank(Material.ROCK);
 	public static Block ElectrumInfusedEnergyBank = new ElectrumInfusedEnergyBank(Material.ROCK);
+	public static Block CoalGen = new CoalGen(Material.ROCK);
 
 	public static Block CopperOre;
 	public static Block TinOre;
@@ -74,6 +76,9 @@ public class ModBlocks {
 		GameRegistry.register(MetalBender.setRegistryName("metalbender"));
 		GameRegistry.register(new MainItemBlock(MetalBender).setRegistryName(MetalBender.getRegistryName()));
 
+		GameRegistry.register(CoalGen.setRegistryName("coalgen"));
+		GameRegistry.register(new MainItemBlock(CoalGen).setRegistryName(CoalGen.getRegistryName()));
+
 		CopperOre = regBlock(Material.GROUND, "copper_ore", 1.0F, 1);
 		TinOre = regBlock(Material.GROUND, "tin_ore", 1.0F, 1);
 		SilverOre = regBlock(Material.IRON, "silver_ore", 2.0F, 2);
@@ -117,6 +122,7 @@ public class ModBlocks {
 		reg(MetalBender);
 		reg(LeadInfusedEnergyBank);
 		reg(ElectrumInfusedEnergyBank);
+		reg(CoalGen);
 
 		reg(CopperOre);
 		reg(TinOre);

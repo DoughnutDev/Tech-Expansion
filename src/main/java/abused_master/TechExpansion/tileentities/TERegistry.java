@@ -4,6 +4,7 @@ import abused_master.TechExpansion.tileentities.conduits.TileDeFluxedEnergyCondu
 import abused_master.TechExpansion.tileentities.energybank.TileCreativeEnergyCell;
 import abused_master.TechExpansion.tileentities.energybank.TileElectrumEnergyBank;
 import abused_master.TechExpansion.tileentities.energybank.TileLeadEnergyBank;
+import abused_master.TechExpansion.tileentities.generators.TileCoalGen;
 import abused_master.TechExpansion.tileentities.machine.TileMetalBender;
 import abused_master.TechExpansion.tileentities.machine.TilePulverizer;
 import abused_master.TechExpansion.tileentities.machine.TileQuarry;
@@ -21,6 +22,7 @@ public class TERegistry {
 		GameRegistry.registerTileEntity(TileLeadEnergyBank.class, "tile_lead_energy_bank");
 		GameRegistry.registerTileEntity(TileElectrumEnergyBank.class, "tile_electrum_energy_bank");
 		GameRegistry.registerTileEntity(TileQuarry.class, "tile_quarry");
+		GameRegistry.registerTileEntity(TileCoalGen.class, "tile_coal_gen");
 
 
 	}

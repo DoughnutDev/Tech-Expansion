@@ -33,6 +33,8 @@ tile.quarry.name=Expansion Quarry
 tile.metalbender.name=MetalBender
 tile.lead_infused_energy_bank.name=Lead Infused Energy Bank
 tile.electrum_infused_energy_bank.name=Electrum Infused Energy Bank
+tile.coalgen.name=Coal Generator
+tile.lava_generator.name=Lava Generator
 
 tile.copper_ore.name=Copper Ore
 tile.copper_block.name=Copper Block

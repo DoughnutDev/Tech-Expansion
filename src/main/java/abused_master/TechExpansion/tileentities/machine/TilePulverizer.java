@@ -268,9 +268,9 @@ public class TilePulverizer extends TileEntity implements ITickable, IInventory,
             if (!itemstack.func_190926_b())
             {
                 return false;
-            }	
+            }
        	  }
-		return true;    
+		return true;
      	}
 
 	@Override
