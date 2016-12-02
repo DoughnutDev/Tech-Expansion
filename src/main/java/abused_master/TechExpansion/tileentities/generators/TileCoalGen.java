@@ -1,9 +1,8 @@
 package abused_master.TechExpansion.tileentities.generators;
 
 import abused_master.TechExpansion.tileentities.container.generators.CoalGenContainer;
-import cofh.api.energy.EnergyStorage;
-import cofh.api.energy.IEnergyProvider;
-import cofh.api.energy.IEnergyReceiver;
+import abused_master.TechExpansion.tileentities.machine.StackUtil;
+import cofh.api.energy.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,9 +19,12 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -33,11 +35,20 @@ import javax.annotation.Nullable;
  */
 public class TileCoalGen extends TileEntity implements IEnergyProvider, IEnergyReceiver, ITickable, ISidedInventory {
 
-    public EnergyStorage storage = new EnergyStorage(100000);
+    public EnergyStorage storage = new EnergyStorage(100000, 500);
     private NonNullList<ItemStack> coalGen = NonNullList.<ItemStack>func_191197_a(1, ItemStack.field_190927_a);
-    private int burning;
-    public static int rfPerTick = 60;
-    public static int ticksPerCoal = 600;
+    public static final int PRODUCE = 32;
+    public int maxBurnTime;
+    public int currentBurnTime;
+
+    private int lastEnergy;
+    private int lastBurnTime;
+    private int lastCurrentBurnTime;
+
+    public static int SENDPERTICK = 1500;
+
+    public TileCoalGen() {
+    }
 
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
@@ -49,6 +60,8 @@ public class TileCoalGen extends TileEntity implements IEnergyProvider, IEnergyR
             coalGen.set(itemTag.getByte("Slot"), stack);
         }
         storage.readFromNBT(nbt);
+        this.currentBurnTime = nbt.getInteger("BurnTime");
+        this.maxBurnTime = nbt.getInteger("MaxBurnTime");
     }
 
     @Override
@@ -230,11 +243,77 @@ public class TileCoalGen extends TileEntity implements IEnergyProvider, IEnergyR
         return false;
     }
 
+    public static boolean isEnergyTE(TileEntity te) {
+        return te instanceof IEnergyHandler || (te != null && te.hasCapability(CapabilityEnergy.ENERGY, null));
+    }
+
     @Override
     public void update() {
+        if(!this.worldObj.isRemote){
+            boolean isBurning = this.currentBurnTime > 0;
 
+            if(this.currentBurnTime > 0){
+                this.currentBurnTime--;
+                this.storage.receiveEnergy(PRODUCE, false);
+            }
+
+            if(this.currentBurnTime <= 0 && StackUtil.isValid(this.coalGen.get(0)) && TileEntityFurnace.getItemBurnTime(this.coalGen.get(0)) > 0 && this.storage.getEnergyStored() < this.storage.getMaxEnergyStored()){
+
+
+                int burnTime = TileEntityFurnace.getItemBurnTime(this.coalGen.get(0));
+
+                this.maxBurnTime = burnTime;
+                this.currentBurnTime = burnTime;
+
+                this.coalGen.set(0, StackUtil.addStackSize(this.coalGen.get(0), -1));
+            }
+
+            if(isBurning != this.currentBurnTime > 0){
+                this.markDirty();
+            }
+
+            if((this.storage.getEnergyStored() != this.lastEnergy || this.currentBurnTime != this.lastCurrentBurnTime || this.lastBurnTime != this.maxBurnTime)){
+                this.lastEnergy = this.storage.getEnergyStored();
+                this.lastCurrentBurnTime = this.currentBurnTime;
+                this.lastBurnTime = this.currentBurnTime;
+            }
+
+        }
+
+
+
+
+
+
+
+        int energyStored = getEnergyStored(EnumFacing.DOWN);
+
+        for (EnumFacing facing : EnumFacing.values()) {
+            BlockPos pos = getPos().offset(facing);
+            TileEntity te = worldObj.getTileEntity(pos);
+            if (isEnergyTE(te)) {
+                EnumFacing opposite = facing.getOpposite();
+                int rfToGive = SENDPERTICK <= energyStored ? SENDPERTICK : energyStored;
+                int received;
+
+                if (te instanceof IEnergyConnection) {
+                    IEnergyConnection connection = (IEnergyConnection) te;
+                    if (connection.canConnectEnergy(opposite)) {
+                        received = 0;
+                    } else {
+                        received = 0;
+                    }
+                } else {
+                    received = 0;
+                }
+                energyStored -= storage.extractEnergy(received, false);
+                if (energyStored <= 0) {
+                    break;
+                }
+            }
+        }
     }
-    
+
     @Nullable
     @Override
     public SPacketUpdateTileEntity getUpdatePacket() {
@@ -273,4 +352,5 @@ public class TileCoalGen extends TileEntity implements IEnergyProvider, IEnergyR
     {
         this.readFromNBT(tag);
     }
+
 }
